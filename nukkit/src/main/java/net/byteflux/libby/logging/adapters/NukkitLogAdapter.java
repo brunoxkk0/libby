@@ -2,6 +2,7 @@ package net.byteflux.libby.logging.adapters;
 
 import cn.nukkit.plugin.PluginLogger;
 import net.byteflux.libby.logging.LogLevel;
+import org.slf4j.Logger;
 
 import static java.util.Objects.requireNonNull;
 
@@ -12,14 +13,14 @@ public class NukkitLogAdapter implements LogAdapter {
     /**
      * Nukkit plugin logger
      */
-    private final PluginLogger logger;
+    private final Logger logger;
 
     /**
      * Creates a new Nukkit log adapter that logs to a {@link PluginLogger}.
      *
      * @param logger the plugin logger to wrap
      */
-    public NukkitLogAdapter(PluginLogger logger) {
+    public NukkitLogAdapter(Logger logger) {
         this.logger = requireNonNull(logger, "logger");
     }
 
@@ -39,7 +40,7 @@ public class NukkitLogAdapter implements LogAdapter {
                 logger.info(message);
                 break;
             case WARN:
-                logger.warning(message);
+                logger.warn(message);
                 break;
             case ERROR:
                 logger.error(message);
@@ -65,7 +66,7 @@ public class NukkitLogAdapter implements LogAdapter {
                 logger.info(message, throwable);
                 break;
             case WARN:
-                logger.warning(message, throwable);
+                logger.warn(message, throwable);
                 break;
             case ERROR:
                 logger.error(message, throwable);
